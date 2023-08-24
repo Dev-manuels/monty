@@ -4,11 +4,11 @@ int isValidCmd(char *token, int line_number);
 info_t info_glob = {0, STACK, 0, NULL, NULL, NULL, NULL, {{"push", push},
 {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap}, {"nop", nop},
 {"add", add}, {"sub", sub}, {"div", _div}, {"mul", _mul}, {"mod", _mod},
-{"pchar", pchar}, {NULL, NULL}}};
+{"pchar", pchar}, {"pstr", pstr}, {NULL, NULL}}};
 /**
  * main - main program entry
  * @argc: argument count
- * @argv: argument vector
+ * @argv: argument #include "monty.h"
  * Return: 0 on success and 1 on failure
  */
 int main(int argc, char **argv)
@@ -17,42 +17,51 @@ int main(int argc, char **argv)
 	int rtVal = EXIT_FAILURE, line_number = 0, i = 0;
 
 	atexit(free_stack);
-	if (argc < 2)
+	if (argc < 2)/* Check that the program recived two arguments */
 		fprintf(stderr, "USAGE: monty file\n");
 	else
 	{
-		FILE *file = fopen(argv[1], "r");
+		FILE *file = fopen(argv[1], "r");/* Attempt to open file in Read mode */
 		char line[200], *token, delim[] = " \n";
 
+		/* Check if file was opened successful */
 		if (file == NULL)
 		{
 			fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 			return (EXIT_FAILURE);
 		}
+		/* Read from the file and tokenize the inputs line by line */
 		while (fgets(line, sizeof(line), file) != NULL)
 		{
 			line_number++;
+			/* Check if the current line is empty */
 			if (is_empty(line) == 0)
 				continue;
 			token = strtok(line, delim);
-			if (token[0] == '#')
+			if (token[0] == '#')/* Handle Comments */
 				continue;
+			/* Check if the opcode is a valid command */
 			if (isValidCmd(token, line_number) != 0)
 			{
 				fclose(file);
 				exit(EXIT_FAILURE);
 			}
+			/* Proceed to handle the opcode */
 			for (i = 0; info_glob.opcs[i].opcode != NULL; i++)
 			{
+				/* Check if the opcode is push which takes additional arg */
 				if (strcmp(token, info_glob.opcs[0].opcode) == 0)
 				{
 					token = strtok(NULL, delim);
+					/* Check if the following input is a valid int */
 					if (is_number(token) == 0)
 					{
+					/* Check if the arg is a comment */
 					if (token[0] == '#')
 						break;
 					info_glob.val = atoi(token);
 					node = create_node();
+					/* Call the push function */
 					info_glob.opcs[0].f(&node, line_number);
 					}
 				} else if (strcmp(token, info_glob.opcs[i].opcode) == 0)

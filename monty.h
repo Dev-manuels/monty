@@ -87,5 +87,6 @@ void push(stack_t **stack, unsigned int line_number);
 char *_strdup(const char *s);
 void sub(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
 
 #endif

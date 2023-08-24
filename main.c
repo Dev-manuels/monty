@@ -4,7 +4,8 @@ int isValidCmd(char *token, int line_number);
 info_t info_glob = {0, STACK, 0, NULL, NULL, NULL, NULL, {{"push", push},
 {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap}, {"nop", nop},
 {"add", add}, {"sub", sub}, {"div", _div}, {"mul", _mul}, {"mod", _mod},
-{"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl}, {NULL, NULL}}};
+{"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr},
+{NULL, NULL}}};
 /**
  * main - main program entry
  * @argc: argument count

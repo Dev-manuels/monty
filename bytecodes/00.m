@@ -1,4 +1,2 @@
-push -98
- push 33
+push -1
    pall
-   pchar

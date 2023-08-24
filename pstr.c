@@ -26,7 +26,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 		}
 		while (head)
 		{
-			if (head->n == 0 || head->n > 255)
+			if (head->n > 255 || head->n <= 0)
 			{
 				break;
 			}

@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
  * rotl - rotates the stack to the top
- * The top element of the stack becomes the last one, 
+ * The top element of the stack becomes the last one
  * and the second top element of the stack becomes the first one
  * @stack: pointer
  * @line_number: line number of opcode in monty file

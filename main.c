@@ -65,6 +65,11 @@ int main(int argc, char **argv)
 					/* Call the push function */
 					info_glob.opcs[0].f(&node, line_number);
 					}
+					else
+					{
+					fprintf(stderr, "L%d: usage: push integer\n", line_number);
+					exit(EXIT_FAILURE);
+					}
 				} else if (strcmp(token, info_glob.opcs[i].opcode) == 0)
 				{
 					info_glob.opcs[i].f(NULL, line_number);

@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	int rtVal = EXIT_FAILURE, line_number = 0, i = 0;
 
 	atexit(free_stack);
-	if (argc < 2)/* Check that the program recived two arguments */
+	if (argc != 2)/* Check that the program recived two arguments */
 		fprintf(stderr, "USAGE: monty file\n");
 	else
 	{

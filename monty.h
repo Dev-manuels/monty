@@ -63,7 +63,7 @@ typedef struct info_s
 	char *cmd;
 	stack_t *head;
 	stack_t *tail;
-	instruction_t opcs[17];
+	instruction_t opcs[19];
 } info_t;
 
 extern info_t info_glob;
@@ -84,11 +84,13 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
+void _queue(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
 char *_strdup(const char *s);
 void sub(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
 
 #endif

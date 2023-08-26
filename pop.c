@@ -21,6 +21,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	{
 		current = info_glob.tail;
 		info_glob.tail = current->prev;
+		info_glob.tail->next = NULL;
 		free(current);
 		info_glob.nodes--;
 	}
